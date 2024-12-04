@@ -1,25 +1,52 @@
 package com.example.logparser;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
-import java.io.*;
 import java.util.regex.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 @SpringBootApplication
-public class LogParserApplication {
+public class LogParserApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(LogParserApplication.class, args);
     }
 
+    @Override
+    public void run(String... args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
 
-    public static void readFile(String fileName){
+        String input;
+        String fileName = null;
+
+        boolean correctFmt = false;
+
+        // Prompt the user to enter the file name in the correct format
+        while (!correctFmt) {
+            System.out.print("Please enter the file to parse in the format '-- filename.txt': ");
+            input = scanner.nextLine();
+
+            // Validate the input format
+            if (input.startsWith("-- ") && input.split(" ").length == 2) {
+                fileName = input.split(" ")[1]; // Extract the file name
+                if (!fileName.endsWith(".txt")) {
+                    System.err.println("Error: The file must have a .txt extension. Try again.");
+                } else {
+                    correctFmt = true; // Input is valid
+                }
+            } else {
+                System.err.println("Error: Invalid format. Please type '-- filename.txt'.");
+            }
+        }
+
+        System.out.println("Processing file: " + fileName);
+
         BufferedReader reader;
 
         // StringBuilder to hold the entire file content
@@ -57,6 +84,7 @@ public class LogParserApplication {
 
         }
     }
+
 
 
 

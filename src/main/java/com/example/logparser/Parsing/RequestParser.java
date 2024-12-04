@@ -38,7 +38,5 @@ public class RequestParser implements Parser{
         return translated;
     }
 
-    public int percentileCal() {
-        return 0;
-    }
+
 }
