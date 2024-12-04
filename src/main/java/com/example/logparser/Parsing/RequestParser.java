@@ -1,10 +1,14 @@
 package com.example.logparser.Parsing;
 
 import java.util.ArrayList;
+import java.util.HashMap; // import the HashMap class
+
+//HashMap<String, int> capitalCities = new HashMap<String, int>();
 
 public class RequestParser extends LogParser{
     private Parser nextParse;
-    private String[] keywords = {"metric", "value"};
+    private String[] keywords = {"request_method", "request_url",
+            "response_status", "response_time_ms"};
     ArrayList<String> logs = new ArrayList<>();
     private String[] translated;
 
