@@ -30,7 +30,7 @@ public class Calculator {
     public double median(){
         return stats.getPercentile(50);  // 50th percentile is the median
     }
-    public double percentileNinety(){
+    public double getPercentileNinety(){
         return stats.getPercentile(90);
     }
 

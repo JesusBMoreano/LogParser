@@ -21,7 +21,7 @@ public class ResponseTimes {
         min = (int) Math.round(cal.min());
         max = (int) Math.round(cal.max());
         fifty = cal.average();
-        ninety = cal.percentileNinety();
+        ninety = cal.getPercentileNinety();
         ninetyFive = cal.getPercentileNinetyFive();
         ninetyNine = cal.getPercentileNinetyNine();
     }
