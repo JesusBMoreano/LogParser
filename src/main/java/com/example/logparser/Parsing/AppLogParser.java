@@ -5,7 +5,7 @@ import java.util.HashMap; // import the HashMap class
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AppLogParser extends LogParser{
+public class AppLogParser implements Parser{
     private Parser nextParse;
     private String[] keywords = {"level"};
     private ArrayList<String> logs = new ArrayList<>();
@@ -27,7 +27,7 @@ public class AppLogParser extends LogParser{
         return true;
     }
 
-    private void translateAllAPM(){
+    private void translateAllAppLogParser(){
         String regex = "level=([^\\s]+)";
         //Convert every text to APM JSON format
         for (String text: logs) {

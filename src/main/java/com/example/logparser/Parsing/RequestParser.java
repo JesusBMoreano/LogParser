@@ -5,7 +5,7 @@ import java.util.HashMap; // import the HashMap class
 
 //HashMap<String, int> capitalCities = new HashMap<String, int>();
 
-public class RequestParser extends LogParser{
+public class RequestParser implements Parser{
     private Parser nextParse;
     private String[] keywords = {"request_method", "request_url",
             "response_status", "response_time_ms"};

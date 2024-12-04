@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
 import com.example.logparser.Logs.APMLog;
 import com.example.logparser.Logs.APMLogs;
 
-import com.example.logparser.Calculators.APMCalculator;
+import com.example.logparser.Calculators.Calculator;
 
-public class APMParser extends LogParser {
+public class APMParser implements Parser {
     private Parser nextParse;
     private String[] keywords = {"metric", "value"};
     private ArrayList<String> logs = new ArrayList<>();
@@ -74,7 +74,7 @@ public class APMParser extends LogParser {
     private APMLogs calculations(){
         APMLogs allLogs = new APMLogs();
         for (String dataType: translated.keySet()) {
-            APMCalculator cal = new APMCalculator(translated.get(dataType));
+            Calculator cal = new Calculator(translated.get(dataType));
             double average = cal.average();
             double median = cal.median();
             double min = cal.min();
